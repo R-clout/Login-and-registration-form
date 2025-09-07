@@ -10,12 +10,12 @@ form.addEventListener("submit", (e) => {
     const data = new URLSearchParams(formData);
 
     //send data to a server with the fetch API 
-    fetch("/", {
+    fetch("https://reqres.in/api/users", {
         method: 'POST',
         body: data
     }).then(res => res.json())
         .then(data => {
             window.location.href = './success.html';
         })
-        .catch(error => console.error(error));
+        .catch(error => console.log(error))
 })
