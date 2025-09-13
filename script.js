@@ -15,7 +15,12 @@ form.addEventListener("submit", (e) => {
         body: data
     }).then(res => res.json())
         .then(data => {
-            window.location.href = './success.html';
+            if(body.id == "login"){
+                window.alert("login successfully")
+            }
+            if(body.id == "registration"){
+                 window.location.href = './success.html';
+            }
         })
         .catch(error => console.log(error));
 })
