@@ -1,4 +1,5 @@
 const form = document.getElementById("form");
+const body = document.querySelector("body").id;
 
 
 form.addEventListener("submit", (e) => {
