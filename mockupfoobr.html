@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foobr NG</title>
+    <link href="./src/output.css" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-900">
+    <div class="bg-pink-400">
+        <p>Welcome to foobr NG, <span id="mockup-name"></span></p>
+    </div>
+    <a href="./index.html" class="inline-block bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+        Go to Login
+    </a>
+
+    <script >
+        window.onload = function(){
+            const name = localStorage.getItem("fullname");
+            const mockupName = document.getElementById("mockup-name");
+            mockupName.textContent = `${name}`;
+        }
+    </script>
+</body>
+
+</html>
