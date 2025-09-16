@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 const registerForm = document.getElementById("register-form");
 const loginForm = document.getElementById("login-form");
  const successMessage = document.getElementById("success-message");
-=======
-const form = document.getElementById("form");
-const body = document.querySelector("body").id;
->>>>>>> 4c94ae179759fba03dc086fa382b7855715bb54c
 
 if(registerForm){
     registerForm.addEventListener("submit", (e) => {
@@ -31,7 +26,6 @@ if(registerForm){
     // console.log(formData.get("email"));
     // const data = new URLSearchParams(formData);
 
-<<<<<<< HEAD
     // //send data to a server with the fetch API 
     // fetch("https://reqres.in/api/users", {
     //     method: 'POST',
@@ -59,15 +53,3 @@ loginForm.addEventListener("submit", (e) => {
         window.location.href = "mockupfoobr.html";
     }
 })
-=======
-    //send data to a server with the fetch API 
-    fetch("https://reqres.in/api/users", {
-        method: 'POST',
-        body: data
-    }).then(res => res.json())
-        .then(data => {
-          window.location.href = './success.html';
-        })
-        .catch(error => console.log(error));
-})
->>>>>>> 4c94ae179759fba03dc086fa382b7855715bb54c
