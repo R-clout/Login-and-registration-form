@@ -84,13 +84,17 @@ loginForm.addEventListener("submit", (e) => {
 
     const users = JSON.parse(localStorage.getItem("users"));
 
+    if(users == null){
+        error.textContent = "New User?. kindly register";
+    }
+
     console.log(users);
     console.log(email)
     console.log(password);
     const login = users.find(user => user.email === email);
 
     if(!login){
-        error.textContent = "Email not found. Kindly register"
+        error.textContent = "Email incorrect. Kindly register"
     } 
 
     if(login.password !== password){
