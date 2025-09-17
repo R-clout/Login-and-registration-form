@@ -21,10 +21,8 @@
   <script>
     window.onload = function(){
        const regsiterdetails = localStorage.getItem("users");
-      console.log(regsiterdetails);
       const extractedRegister = JSON.parse(regsiterdetails);
       const lastIndex = extractedRegister[extractedRegister.length - 1];
-      console.log(lastIndex);
       const mockupName = document.getElementById("mockup-name");
       mockupName.textContent = lastIndex.fullName;
     }

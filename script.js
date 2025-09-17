@@ -45,10 +45,6 @@ loginForm.addEventListener("submit", (e) => {
     if(users == null){
         error.textContent = "New User?. kindly register";
     }
-
-    console.log(users);
-    console.log(email)
-    console.log(password);
     const login = users.find(user => user.email === email);
 
     if(!login){

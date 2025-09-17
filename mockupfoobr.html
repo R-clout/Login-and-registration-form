@@ -26,25 +26,19 @@
         const mockupName = document.getElementById("mockup-name");
         window.onload = function () {
             const user = JSON.parse(localStorage.getItem("loggedInUser"));
-            console.log(user)
-
             mockupName.textContent = user.fullName;
         }
 
         const deleteButton = document.getElementById("delete-button");
 
         deleteButton.addEventListener("click", () => {
-            console.log("delete")
             const users = JSON.parse(localStorage.getItem("users"));
-            console.log(users);
             const findName = users.find(user => user.fullName === mockupName.textContent);
             
             if(findName){
                 const newUser = users.filter(user => !findName);
                 localStorage.removeItem("users", newUser);
                 window.location.href = "./index.html";
-            } else {
-                console.log(false)
             }
         })
     </script>
