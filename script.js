@@ -30,48 +30,6 @@ if(registerForm){
         localStorage.setItem("users", JSON.stringify(users));
         window.location.href = "./success.html"
     }
-
-    //push the object to the array and then clear the input field to allow other entries
-    // const inputArray = [];
-    // inputArray.push(inputObj);
-    // localStorage.setItem("register", JSON.stringify(inputArray));
-    // console.log(inputArray);
-    // document.forms[0].reset();
-    
-    // 
-    // console.log(localStorage.getItem("register"));
-
-   
-
-    // localStorage.setItem("fullname", fullName.value);
-    // localStorage.setItem("email", email.value);
-    // localStorage.setItem("password", password.value);
-
-
-
-    // const name = localStorage.getItem("fullname");
-    // const savedEmail = localStorage.getItem("email");
-    // const savedPassword = localStorage.getItem("password");
-
-    // console.log(savedEmail);
-    // console.log(savedPassword);
-    // console.log(name);
-
-    //  window.location.href = './success.html';
-    //cut the data from the form
-    // const formData = new FormData(form);
-    // console.log(formData.get("email"));
-    // const data = new URLSearchParams(formData);
-
-    // //send data to a server with the fetch API 
-    // fetch("https://reqres.in/api/users", {
-    //     method: 'POST',
-    //     body: data
-    // }).then(res => res.json())
-    //     .then(data => {
-    //         window.location.href = './success.html';
-    //     })
-    //     .catch(error => console.log(error));
 })
 }
 

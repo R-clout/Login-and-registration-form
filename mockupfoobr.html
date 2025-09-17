@@ -12,17 +12,41 @@
     <div class="bg-pink-400">
         <p>Welcome to foobr NG, <span id="mockup-name"></span></p>
     </div>
-    <a href="./index.html" class="inline-block bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
-        Go to Login
-    </a>
+    <div>
+        <a href="./index.html" class="inline-block bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+            Go to Login
+        </a>
+        <button class="inline-block bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition"
+            id="delete-button">
+            Delete Account
+        </button>
+    </div>
 
-    <script >
-        window.onload = function(){
+    <script>
+        const mockupName = document.getElementById("mockup-name");
+        window.onload = function () {
             const user = JSON.parse(localStorage.getItem("loggedInUser"));
             console.log(user)
-            const mockupName = document.getElementById("mockup-name");
+
             mockupName.textContent = user.fullName;
         }
+
+        const deleteButton = document.getElementById("delete-button");
+
+        deleteButton.addEventListener("click", () => {
+            console.log("delete")
+            const users = JSON.parse(localStorage.getItem("users"));
+            console.log(users);
+            const findName = users.find(user => user.fullName === mockupName.textContent);
+            
+            if(findName){
+                const newUser = users.filter(user => !findName);
+                localStorage.removeItem("users", newUser);
+                window.location.href = "./index.html";
+            } else {
+                console.log(false)
+            }
+        })
     </script>
 </body>
 
