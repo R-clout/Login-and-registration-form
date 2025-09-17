@@ -1,26 +1,63 @@
 const registerForm = document.getElementById("register-form");
 const loginForm = document.getElementById("login-form");
- const successMessage = document.getElementById("success-message");
+const successMessage = document.getElementById("success-message");
+
+
 
 if(registerForm){
     registerForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    const email = document.getElementById("email");
-    const password = document.getElementById("password");
-    const fullName = document.getElementById("full-name");
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const fullName = document.getElementById("full-name").value;
+    const errorMessage = document.getElementById("error-message");
+    //add input details to an object
+    let inputObj = {
+        email,
+        password,
+        fullName
+    }
 
-    localStorage.setItem("fullname", fullName.value);
-    localStorage.setItem("email", email.value);
-    localStorage.setItem("password", password.value);
-    const name = localStorage.getItem("fullname");
-    const savedEmail = localStorage.getItem("email");
-    const savedPassword = localStorage.getItem("password");
+    let users = JSON.parse(localStorage.getItem("users")) || [];
 
-    console.log(savedEmail);
-    console.log(savedPassword);
-    console.log(name);
+    const findemail = users.find(user => user.email === email);
+    
+    if(findemail){
+        errorMessage.textContent = "email already in use";
+    }
+    else{
+        users.push(inputObj);
+        localStorage.setItem("users", JSON.stringify(users));
+        window.location.href = "./success.html"
+    }
 
-     window.location.href = './success.html';
+    //push the object to the array and then clear the input field to allow other entries
+    // const inputArray = [];
+    // inputArray.push(inputObj);
+    // localStorage.setItem("register", JSON.stringify(inputArray));
+    // console.log(inputArray);
+    // document.forms[0].reset();
+    
+    // 
+    // console.log(localStorage.getItem("register"));
+
+   
+
+    // localStorage.setItem("fullname", fullName.value);
+    // localStorage.setItem("email", email.value);
+    // localStorage.setItem("password", password.value);
+
+
+
+    // const name = localStorage.getItem("fullname");
+    // const savedEmail = localStorage.getItem("email");
+    // const savedPassword = localStorage.getItem("password");
+
+    // console.log(savedEmail);
+    // console.log(savedPassword);
+    // console.log(name);
+
+    //  window.location.href = './success.html';
     //cut the data from the form
     // const formData = new FormData(form);
     // console.log(formData.get("email"));
@@ -40,16 +77,29 @@ if(registerForm){
 
 loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
-     const email = document.getElementById("email");
-    const password = document.getElementById("password");
+     const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const error = document.getElementById("error-message");
 
-    const name = localStorage.getItem("fullname");
-    const savedEmail = localStorage.getItem("email");
-    const savedPassword = localStorage.getItem("password");
 
-    if(email.value !== savedEmail || password.value !== savedPassword){
-        console.log("Invalid Details");
-    } else {
-        window.location.href = "mockupfoobr.html";
+    const users = JSON.parse(localStorage.getItem("users"));
+
+    console.log(users);
+    console.log(email)
+    console.log(password);
+    const login = users.find(user => user.email === email);
+
+    if(!login){
+        error.textContent = "Email not found. Kindly register"
+    } 
+
+    if(login.password !== password){
+        error.textContent = "password incorrect. try again";
+    }
+
+    if(login && login.password === password){
+    localStorage.setItem("loggedInUser", JSON.stringify(login));
+        console.log(localStorage.getItem("loggedInUser"));
+        window.location.href = "./mockupfoobr.html";
     }
 })

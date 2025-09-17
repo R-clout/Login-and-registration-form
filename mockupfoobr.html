@@ -18,9 +18,10 @@
 
     <script >
         window.onload = function(){
-            const name = localStorage.getItem("fullname");
+            const user = JSON.parse(localStorage.getItem("loggedInUser"));
+            console.log(user)
             const mockupName = document.getElementById("mockup-name");
-            mockupName.textContent = `${name}`;
+            mockupName.textContent = user.fullName;
         }
     </script>
 </body>
